@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poorna Pragnya Photography</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+        }
+
+        /* Modern Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            color: #2dd4bf;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            fill: #2dd4bf;
+        }
+
+        .logo-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            /* color: rgba(255,255,255,0.9); */
+            color: #2dd4bf;
+            text-decoration: none;
+            font-weight: 1000;
+            padding: 1.45rem 1.5rem;
+            /* border-radius: 10px; */
+            transition: all 0.3s ease;
+            /* background: rgba(45, 212, 191, 0.1); */
+        }
+
+        .nav-links a:hover {
+            background: rgba(34, 200, 178, 0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 5% 4rem;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Home Section */
+        #home {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
+                        url('https://images.pexels.com/photos/2386310/pexels-photo-2386310.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .photographer-info h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            color: #2dd4bf;
+        }
+
+        .photographer-info p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            opacity: 0.9;
+            color: #cccccc;
+        }
+
+        /* Gallery Sections */
+        .gallery-section {
+            background: #0a0a0a;
+            padding: 8rem 5% 4rem;
+        }
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1rem;
+            padding: 1rem;
+        }
+
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1rem;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .see-more {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .see-more-btn {
+            background: rgba(45, 212, 191, 0.2);
+            color: #2dd4bf;
+            padding: 1rem 2rem;
+            margin-left: 40vw;;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .see-more-btn:hover {
+            background: rgba(45, 212, 191, 0.3);
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-card {
+            background: #2d2d2d;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .contact-form h2 {
+            color: #2dd4bf;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #1a1a1a;
+            border: 2px solid #333333;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: #ffffff;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #2dd4bf;
+            box-shadow: 0 0 8px rgba(45, 212, 191, 0.2);
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, #2dd4bf, #1a9c8f);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(45, 212, 191, 0.3);
+            border: none;
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .modal-nav:hover {
+            background: rgba(45, 212, 191, 0.5);
+        }
+
+        .modal-prev {
+            left: 1rem;
+        }
+
+        .modal-next {
+            right: 1rem;
+        }
+
+        /* Navigation Arrows */
+        .nav-arrow {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .nav-arrow svg {
+            width: 32px;
+            height: 32px;
+            fill: #ffffff;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 24 24">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+            <span class="logo-text">Poorna Pragnya Photography</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="photographer-info">
+            <h1>Capture Eternal Moments</h1>
+            <p>Professional photography services specializing in portrait, wedding, and artistic photography</p>
+        </div>
+        <div class="nav-arrow" onclick="scrollToSection('gallery')">
+            <svg viewBox="0 0 24 24"><path d="M12 17.414l-5.707-5.707 1.414-1.414L12 14.586l4.293-4.293 1.414 1.414L12 17.414z"/></svg>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <div class="masonry-grid">
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1011/600/900" alt="Portrait 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1027/600/800" alt="Portrait 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1040/900/600" alt="Landscape 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1058/800/600" alt="Landscape 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1062/700/900" alt="Portrait 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1074/900/700" alt="Landscape 3">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/1083/600/800" alt="Portrait 4">
+            </div>
+            <div class="gallery-item">
+                <img src="https://picsum.photos/id/109/900/600" alt="Landscape 4">
+            </div>
+        </div>
+        <div class="see-more"></div>
+            <a href="#gallery" class="see-more-btn">View More</a>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-card">
+            <form class="contact-form" id="contactForm">
+                <h2>Get in Touch</h2>
+                <div class="form-group">
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Your Message" rows="6" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <button class="modal-nav modal-prev" onclick="navigateModal(-1)">❮</button>
+        <div class="modal-content">
+            <img id="expandedImg" src="" alt="Expanded View">
+        </div>
+        <button class="modal-nav modal-next" onclick="navigateModal(1)">❯</button>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        const galleryItems = Array.from(document.querySelectorAll('.gallery-item:not(.see-more)'));
+        
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Gallery Modal
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                showModalImage();
+            });
+        });
+
+        function showModalImage() {
+            const modal = document.getElementById('imageModal');
+            const expandedImg = document.getElementById('expandedImg');
+            expandedImg.src = galleryItems[currentImageIndex].querySelector('img').src;
+            modal.style.display = 'block';
+        }
+
+        function navigateModal(direction) {
+            currentImageIndex = (currentImageIndex + direction + galleryItems.length) % galleryItems.length;
+            showModalImage();
+        }
+
+        // Close modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your email service integration here
+            alert('Message sent successfully!');
+            this.reset();
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
